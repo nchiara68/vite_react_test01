@@ -1,8 +1,20 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const Profile: React.FC = () => (
-  <Typography variant="h3">🙍‍♂️ Profile Page</Typography>
+  <Box
+    sx={{
+      padding: { xs: 2, md: 4 },            // ✅ Responsive Padding
+      textAlign: 'center',                   // ✅ Centered Content
+    }}
+  >
+    <Typography
+      variant="h3"
+      sx={{ fontSize: { xs: '2rem', md: '3rem' } }} // ✅ Responsive Font Size
+    >
+      🙍‍♂️ Profile Page
+    </Typography>
+  </Box>
 );
 
 export default Profile;

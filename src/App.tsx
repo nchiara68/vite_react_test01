@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material'; // ✅ Removed `Typography`
 import { Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar';
@@ -25,19 +25,26 @@ const App: React.FC = () => {
           alignItems: 'center',
           justifyContent: 'center',
           width: '100%',
-          maxWidth: '800px',
+          maxWidth: '1200px',
           margin: '0 auto',
           padding: 3,
-          marginLeft: isSidebarOpen ? '240px' : '60px', // ✅ Dynamic margin
-          transition: 'margin-left 0.3s ease',          // ✅ Smooth animation
+          marginLeft: isSidebarOpen ? '240px' : '60px',
+          transition: 'margin-left 0.3s ease',
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Welcome to My App! 🚀
-        </Typography>
-
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                totalPaid={35}
+                totalPending={12}
+                totalValuePaid={8450}
+                totalOutstanding={1200}
+                overdueInvoices={3}
+              />
+            }
+          />
           <Route path="/upload" element={<Upload />} />
           <Route path="/invoices" element={<Invoices />} />
           <Route path="/profile" element={<Profile />} />
