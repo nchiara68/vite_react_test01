@@ -4,22 +4,23 @@ import InvoiceTable from '../components/InvoiceTable';
 
 const Invoices: React.FC = () => (
   <Container
-    maxWidth={false} // ✅ Removes the default width limit for maximum flexibility
+    maxWidth={false}
     sx={{
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '100% !important',
-      maxWidth: '1000px !important',
-     margin: '0 auto !important',
-      padding: 3,
+      width: '100%',
+      maxWidth: { xs: '100%', md: '1000px' },  // ✅ Responsive Width
+      margin: '0 auto',
+      padding: { xs: 2, md: 4 },                // ✅ Responsive Padding
     }}
   >
     <Typography 
       variant="h2" 
       color="primary" 
-      align="center" 
+      align="center"
+      sx={{ fontSize: { xs: '1.8rem', md: '3rem' } }} // ✅ Responsive Font Size
       gutterBottom
     >
       Invoices Summary
