@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead,
-  TableRow, Paper, Chip
+  TableRow, Paper, Chip, Box
 } from '@mui/material';
 import { invoices } from '../data/invoicesData';
 import type { ChipProps } from '@mui/material';
@@ -14,7 +14,16 @@ const statusColor: Record<string, ChipProps['color']> = {
 
 const InvoiceTable: React.FC = () => {
   return (
-    <TableContainer component={Paper} sx={{ marginTop: 2 }}>
+    <TableContainer
+      component={Paper}
+      sx={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '0 auto',
+        display: 'block',
+        boxShadow: 3,
+      }}
+    >
       <Table>
         <TableHead>
           <TableRow>
@@ -33,11 +42,23 @@ const InvoiceTable: React.FC = () => {
               <TableCell>{invoice.customer}</TableCell>
               <TableCell>${invoice.amount.toFixed(2)}</TableCell>
               <TableCell>
-                <Chip
-                  label={invoice.status}
-                  color={statusColor[invoice.status]}
-                  variant="outlined"
-                />
+                <Box
+                  sx={{
+                    width: '100px',   // Fixed width for uniformity
+                    display: 'flex',
+                    justifyContent: 'center', 
+                  }}
+                >
+                  <Chip
+                    label={invoice.status}
+                    color={statusColor[invoice.status]}
+                    variant="outlined"
+                    sx={{
+                      width: '100%',       // Ensures Chip fills the box
+                      textAlign: 'center', // Centers text inside Chip
+                    }}
+                  />
+                </Box>
               </TableCell>
               <TableCell>{invoice.date}</TableCell>
             </TableRow>
