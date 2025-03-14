@@ -1,15 +1,39 @@
-// /pages/Invoices.tsx
 import React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import InvoiceTable from '../components/InvoiceTable';
 
 const Invoices: React.FC = () => (
-  <Container>
-    <Typography variant="h4" sx={{ marginTop: 4, marginBottom: 2 }}>
-      📄 Invoices Summary
+  <Container
+    maxWidth={false} // ✅ Removes the default width limit for maximum flexibility
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100% !important',
+      maxWidth: '1000px !important',
+     margin: '0 auto !important',
+      padding: 3,
+    }}
+  >
+    <Typography 
+      variant="h2" 
+      color="primary" 
+      align="center" 
+      gutterBottom
+    >
+      Invoices Summary
     </Typography>
 
-    <InvoiceTable />
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+      }}
+    >
+      <InvoiceTable />
+    </Box>
   </Container>
 );
 
